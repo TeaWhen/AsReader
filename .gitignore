@@ -1,0 +1,11 @@
+*.DS_Store
+Thumbs.db
+Desktop.ini
+
+!*.keep
+
+test.*
+*.pid
+*.log
+.ruby-gemset
+.ruby-version
