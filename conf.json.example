@@ -1,0 +1,7 @@
+{
+  "github": {
+    "client_id" : "",
+    "client_secret" : ""
+  },
+  "mysql": "mysql://user:pass@localhost/db_name"
+}

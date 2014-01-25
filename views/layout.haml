@@ -1,0 +1,18 @@
+-# encoding: utf-8
+!!!
+%html
+  %head
+    %title
+      - if @title
+        = @title+" | "
+      AsReader
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %meta{charset: "utf-8"}
+    %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css", rel: "stylesheet"}
+    %link{href: "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel: "stylesheet"}
+    %link{href: "//fonts.googleapis.com/css?family=Arvo", rel: "stylesheet"}
+    %link{href: "//fonts.googleapis.com/css?family=PT+Sans", rel: "stylesheet"}
+    %link{href: "/style.css", rel: "stylesheet"}
+  %body
+    .container
+      = yield

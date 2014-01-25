@@ -17,9 +17,12 @@ gem 'data_mapper'
 # Sinatra
 gem 'haml'
 gem 'sinatra'
-gem 'rack_csrf'
 gem 'sinatra-contrib'
 
+# Other
+gem 'andand'
+
 group :development do
-  gem 'mina'
+  gem 'shotgun'
+  gem 'byebug'
 end

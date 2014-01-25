@@ -1,0 +1,20 @@
+body {
+    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arvo', Georgia, Times, serif;
+}
+
+#index-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#index-features {
+  text-align: center;
+}
+
+#index-logingithub {
+  margin-top: 20px;
+}

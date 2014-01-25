@@ -2,8 +2,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.5)
-    backports (3.3.5)
+    andand (1.3.3)
+    backports (3.4.0)
     bcrypt-ruby (3.1.2)
+    byebug (2.5.0)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
+    columnize (0.3.6)
     data_mapper (1.2.0)
       dm-aggregates (~> 1.2.0)
       dm-constraints (~> 1.2.0)
@@ -16,6 +21,7 @@ GEM
       dm-validations (~> 1.2.0)
     data_objects (0.10.13)
       addressable (~> 2.1)
+    debugger-linecache (1.2.0)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
     dm-constraints (1.2.0)
@@ -53,23 +59,18 @@ GEM
     do_mysql (0.10.13)
       data_objects (= 0.10.13)
     fastercsv (1.5.5)
-    haml (4.0.4)
+    haml (4.0.5)
       tilt
     json (1.8.1)
     json_pure (1.8.1)
-    mina (0.3.0)
-      open4
-      rake
-    multi_json (1.8.2)
-    open4 (1.3.0)
+    multi_json (1.8.4)
     rack (1.5.2)
-    rack-protection (1.5.1)
+    rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rack_csrf (2.4.0)
-      rack (>= 0.9)
-    rake (10.1.0)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -89,6 +90,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  andand
+  byebug
   data_mapper
   dm-aggregates
   dm-constraints
@@ -99,7 +102,6 @@ DEPENDENCIES
   dm-types
   dm-validations
   haml
-  mina
-  rack_csrf
+  shotgun
   sinatra
   sinatra-contrib
