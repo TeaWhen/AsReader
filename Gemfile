@@ -21,6 +21,7 @@ gem 'sinatra-contrib'
 
 # Other
 gem 'andand'
+gem 'httparty'
 
 group :development do
   gem 'shotgun'

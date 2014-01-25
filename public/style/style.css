@@ -1,9 +1,10 @@
 body {
-    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+  font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+  background: url(/image/handmadepaper.png) repeat 0 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Arvo', Georgia, Times, serif;
+  font-family: 'Arvo', Georgia, Times, serif;
 }
 
 #index-title {
