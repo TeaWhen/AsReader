@@ -18,30 +18,31 @@ get '/' do
   haml :index
 end
 
-get '/login/github/?' do
-  redirect "https://github.com/login/oauth/authorize?client_id=#{settings.config[:github][:client_id]}"
+get '/login/douban/?' do
+  redirect "https://www.douban.com/service/auth2/auth?client_id=#{settings.config[:douban][:apikey]}&redirect_uri=http://127.0.0.1:9393/login_callback/douban/&response_type=code&scope=book_basic_r,douban_basic_common"
 end
 
-get '/login_callback/github/?' do
-  resp = HTTParty.post("https://github.com/login/oauth/access_token?client_id=#{settings.config[:github][:client_id]}&client_secret=#{settings.config[:github][:client_secret]}&code=#{params[:code]}",
+get '/login_callback/douban/?' do
+  resp = HTTParty.post("https://www.douban.com/service/auth2/token?client_id=#{settings.config[:douban][:apikey]}&client_secret=#{settings.config[:douban][:secret]}&code=#{params[:code]}&grant_type=authorization_code&redirect_uri=http://127.0.0.1:9393/login_callback/douban/",
     :headers => {"Accept"=> "application/json"})
   info = JSON::parse(resp.body, symbolize_names: true)
-  u = User.first(token: info[:access_token])
+  u = User.first(dbid: info[:douban_user_id])
   unless u
-    user_resp = HTTParty.get("https://api.github.com/user?access_token=#{info[:access_token]}", :headers => {"User-Agent" => "AsReader"})
+    user_resp = HTTParty.get("https://api.douban.com/v2/user/~me", :headers => {"User-Agent" => "AsReader", "Authorization" => "Bearer #{info[:access_token]}"})
     user_info  = JSON::parse(user_resp.body, symbolize_names: true)
     user = User.new
-    user.username = user_info[:login]
     user.name = user_info[:name]
-    user.token = info[:access_token]
+    user.dbid = info[:douban_user_id]
+    user.access_token = info[:access_token]
+    user.refresh_token = info[:refresh_token]
     user.save
     u = user
   end
-  cookies[:login] = u.username
+  cookies[:login] = u.dbid
   redirect '/home/'
 end
 
 get '/home/?' do
-  u =  User.first(username: cookies[:login])
+  u =  User.first(dbid: cookies[:login])
   return "Welcome, #{u.name}"
 end

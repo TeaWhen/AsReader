@@ -13,9 +13,10 @@ class User
   include DataMapper::Resource
   property :id, Serial
 
-  property :username, String, :required => true, :unique => true
-  property :name, String
-  property :token, String, :required => true
+  property :name, String, :required => true
+  property :dbid, String, :required => true, :unique => true
+  property :access_token, String, :required => true
+  property :refresh_token, String
 end
 
 DataMapper.finalize
